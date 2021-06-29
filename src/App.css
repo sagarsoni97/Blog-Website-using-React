@@ -2,6 +2,17 @@
   text-align: center;
 }
 
+.title{
+  color: red;
+}
+
+.body{
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

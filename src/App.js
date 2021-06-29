@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
+import Signup from './Components/Signup';
+import Signin from './Components/Signin';
+import Home from './Components/Home';
+import CreateBlog from './Components/CreateBlog';
+import BlogDetails from './Components/BlogDetails';
+import Profile from './Components/Profile';
+import Navbar from './Components/Navbar';
+import { auth, db, storage, serverTimestamp, id } from './firebaseConfig';
 
 function App() {
+  const [user,setUser] = useState(null)
+  useEffect(()=>{
+       auth.onAuthStateChanged(user=>{
+         if(user) setUser(user)
+         else setUser(null)
+       })
+  },[])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar user={user}/>
+    </>
   );
 }
 
